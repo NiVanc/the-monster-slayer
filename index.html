@@ -46,13 +46,13 @@
             SPECIAL ATTACK
           </button>
           <button id="heal" @click="heal">HEAL</button>
-          <button id="give-up">GIVE UP</button>
+          <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
       </section>
       <section class="row log" v-if="activeGame">
         <div class="small-12 columns">
           <ul>
-            <li></li>
+            <li v-for="turn in turns">{{ turn }}</li>
           </ul>
         </div>
       </section>

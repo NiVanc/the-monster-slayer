@@ -25,7 +25,10 @@ new Vue({
       // Player attacks and we check if the monster has health left
       let damage = this.calculateDamage(3, 10);
       this.monsterHealth -= damage;
-      this.turns.unshift("Player hits monster for " + damage);
+      this.turns.unshift({
+        isPlayer: true,
+        text: "Player hits monster for " + damage
+      });
       if (this.checkEndGame()) {
         return;
       }
@@ -35,9 +38,10 @@ new Vue({
       // Player special attacks and we check if the monster has health left
       let damage = this.calculateDamage(10, 20);
       this.monsterHealth -= damage;
-      this.turns.unshift(
-        "Player hits monster with a special attack for " + damage
-      );
+      this.turns.unshift({
+        isPlayer: true,
+        text: "Player hits monster with a special attack for " + damage
+      });
       if (this.checkEndGame()) {
         return;
       }
@@ -47,7 +51,10 @@ new Vue({
       this.playerHealth <= 90
         ? (this.playerHealth += 20)
         : (this.playerHealth = 100);
-      this.turns.unshift("Player heals for 10");
+      this.turns.unshift({
+        isPlayer: true,
+        text: "Player heals for 10"
+      });
       this.monsterAttack();
     },
     giveUp() {
@@ -57,7 +64,10 @@ new Vue({
       // Monster attacks and we check if the player has health left
       let damage = this.calculateDamage(5, 30);
       this.playerHealth -= damage;
-      this.turns.unshift("Monster hits player for " + damage);
+      this.turns.unshift({
+        isPlayer: false,
+        text: "Monster hits player for " + damage
+      });
       this.checkEndGame();
     },
     calculateDamage(min, max) {

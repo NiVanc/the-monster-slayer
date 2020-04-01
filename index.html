@@ -52,7 +52,12 @@
       <section class="row log" v-if="activeGame">
         <div class="small-12 columns">
           <ul>
-            <li v-for="turn in turns">{{ turn }}</li>
+            <li
+              v-for="turn in turns"
+              :class="{turnPlayer: turn.isPlayer, turnMonster: !turn.isPlayer}"
+            >
+              {{ turn.text }}
+            </li>
           </ul>
         </div>
       </section>

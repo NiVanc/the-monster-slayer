@@ -25,8 +25,19 @@ new Vue({
       if (this.checkEndGame()) {
         return;
       }
+      this.monsterAttack();
+    },
+    specialAttack() {
+      // Player special attacks and we check if the monster has health left
+      this.monsterHealth -= this.calculateDamage(10, 20);
+      if (this.checkEndGame()) {
+        return;
+      }
+      this.monsterAttack();
+    },
+    monsterAttack() {
       // Monster attacks and we check if the player has health left
-      this.playerHealth -= this.calculateDamage(5, 12);
+      this.playerHealth -= this.calculateDamage(5, 30);
       this.checkEndGame();
     },
     calculateDamage(min, max) {

@@ -35,6 +35,12 @@ new Vue({
       }
       this.monsterAttack();
     },
+    heal() {
+      this.playerHealth <= 90
+        ? (this.playerHealth += 20)
+        : (this.playerHealth = 100);
+      this.monsterAttack();
+    },
     monsterAttack() {
       // Monster attacks and we check if the player has health left
       this.playerHealth -= this.calculateDamage(5, 30);
